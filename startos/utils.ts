@@ -148,7 +148,7 @@ export function getExteralAddresses() {
       .getOwn(effects, peerInterfaceId)
       .const()
 
-    const urls = peerInterface?.addressInfo?.publicUrls || []
+    const urls = peerInterface?.addressInfo?.public.format() || []
 
     const nonOnionUrl = urls.find((u) => !u.includes('onion'))
     if (nonOnionUrl && !nonOnionUrl.endsWith(':8333')) {

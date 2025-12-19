@@ -13,7 +13,7 @@ export const mainMounts = sdk.Mounts.of().mountVolume({
   readonly: false,
 })
 
-export const main = sdk.setupMain(async ({ effects, started }) => {
+export const main = sdk.setupMain(async ({ effects }) => {
   /**
    * ======================== Setup (optional) ========================
    */
@@ -55,7 +55,7 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
 
   await rm(`${bitcoindSub.rootfs}/${rpcCookieFile}`, { force: true })
 
-  const daemons = sdk.Daemons.of(effects, started)
+  const daemons = sdk.Daemons.of(effects)
     .addDaemon('primary', {
       subcontainer: bitcoindSub,
       exec: {
